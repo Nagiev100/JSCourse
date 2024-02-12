@@ -9,12 +9,13 @@ function getTimeOfDay(currentHour) {
         return "вечер";
     }
 }
+
 console.log(getTimeOfDay(7));
-for (let i = 1; i <= 10; i++){
+for (let i = 1; i <= 10; i++) {
     console.log(i)
 }
-for (let i = 1; i <= 10; i++){
-    if (i === 7 ){
+for (let i = 1; i <= 10; i++) {
+    if (i === 7) {
         break;
     }
     console.log(i)
@@ -28,17 +29,12 @@ while (number <= 20) {
 }
 
 function formatPhoneNumber(phoneNumber) {
-    if (!phoneNumber.includes("123")) {
-        phoneNumber = "(123) " + phoneNumber;
-        return phoneNumber
-    }else {
-        const areaCode = phoneNumber.substring(0, 3);
-        const firstPart = phoneNumber.substring(3, 6);
-        const secondPart = phoneNumber.substring(6);
-
-        return `(${areaCode}) ${firstPart}-${secondPart}`;
+    if (isNaN(phoneNumber)) {
+        return "Некорректный номер телефона";
     }
+    const areaCode = phoneNumber.substring(0, 3);
+    const firstPart = phoneNumber.substring(3, 6);
+    const secondPart = phoneNumber.substring(6);
+    return `(${areaCode}) ${firstPart}-${secondPart}`;
 }
-
-// Пример использования:
 console.log(formatPhoneNumber("1234567890"))
