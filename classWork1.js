@@ -39,6 +39,4 @@ function formatPhoneNumber(phoneNumber) {
         return `(${areaCode}) ${firstPart}-${secondPart}`;
     }
 }
-
-// Пример использования:
 console.log(formatPhoneNumber("1234567890"))
