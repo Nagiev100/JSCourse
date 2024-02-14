@@ -105,10 +105,7 @@ function processText(text) {
     if (typeof text !== "string"){
        return  'Введите строку';
     }
-    text = text.trim();
-    text = text.toLowerCase();
-    text = text.replace(/a/g, 'X');
-    return text;
+   return text.trim().toLowerCase().replace(/a/g, 'X');
 }
 console.log(processText(" Hi Bro "))
 /*Создать функцию processText, которая принимает строку текста и выполняет следующие операции:
