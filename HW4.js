@@ -50,13 +50,13 @@ function firstUniqueCharIndex(str) {
     for (let i = 0; i < str.length; i++) {
         const char = str[i];
         if (charCount.get(char) === 1) {
-            return str[i];
+            return i;
         }
     }
     return 'В введеной строке все числа повторяются одинаковое колличество раз';
 }
 
-console.log(firstUniqueCharIndex('aba'));
+console.log(firstUniqueCharIndex('aab'));
 
 //5. Напишите функцию, которая принимает строку в качестве параметра и возвращает количество гласных в строке.//
 function countVowels(str) {
