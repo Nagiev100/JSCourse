@@ -72,5 +72,27 @@ function countVowels(str) {
 }
 
 console.log(countVowels('Web Development Tutorial'));
+// 6.Extra task :Тебе нужно написать функцию, которая принимает строку и возвращает самую длинную подстроку из неповторяющихся символов
+// типа "pwwkew" -> "wke"//
+function findSubstring(s) {
+    let longest = '';
+    let start = 0;
+    let end = 0;
+    while (end < s.length) {
+        let currentChar = s[end];
+        if (s.substring(start, end).includes(currentChar)) {
+            start++;
+        } else {
+            end++;
+        }
+        let current = s.substring(start, end);
+        if (current.length > longest.length) {
+            longest = current;
+        }
+    }
+    return longest;
+}
+
+console.log(findSubstring('pwwkew'));
 
 
