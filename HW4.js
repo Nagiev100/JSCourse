@@ -53,7 +53,7 @@ function firstUniqueCharIndex(str) {
             return str[i];
         }
     }
-    return 'В введеной строке все числа поторяются одниковое колличество раз';
+    return 'В введеной строке все числа повторяются одинаковое колличество раз';
 }
 
 console.log(firstUniqueCharIndex('aba'));
