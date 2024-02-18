@@ -18,7 +18,7 @@ console.log(isPalindrome('tenet'))
 
 // 2. Напишите функцию, принимающую строку и возвращающую самое длинное слово в строке
 // f('Web Development Tutorial'); // "Development"//
-function longestWord(str) {
+function findLongestWord(str) {
     const words = str.split(' ');
     let longest = '';
     for (let word of words) {
@@ -29,16 +29,16 @@ function longestWord(str) {
     return longest;
 }
 
-console.log(longestWord('Web Development Tutorial'));
+console.log(findLongestWord('Web Development Tutorial'));
 
 // 3. Напишите функцию, принимающую аргумент в виде строки и которая расставляет
 // все буквы строки в алфавитном порядке.Возвращает новую строку с буквами в алфавитном порядке
 // f("alphabetical"); // "aaabcehillpt";//
-const sortLetters = str => str.split('').sort().join('');
+const sortLetters = str => str.toLowerCase().split('').sort().join('');
 console.log(sortLetters("alphabetical"));
 
 // 4. Напишите функцию JavaScript, которая принимает строку и возвращает индекс первого неповторяющегося символа.//
-function firstUniqueCharIndex(str) {
+function searchFirstNonRepeatChar(str) {
     if (typeof str !== "string") {
         return 'Введите строку'
     }
@@ -56,7 +56,7 @@ function firstUniqueCharIndex(str) {
     return 'В введеной строке все числа повторяются одинаковое колличество раз';
 }
 
-console.log(firstUniqueCharIndex('aab'));
+console.log(searchFirstNonRepeatChar('aab'));
 
 //5. Напишите функцию, которая принимает строку в качестве параметра и возвращает количество гласных в строке.//
 function countVowels(str) {
@@ -95,4 +95,9 @@ function findSubstring(s) {
 
 console.log(findSubstring('pwwkew'));
 
+let users = new Set();
+ users
+     .add('max')
+     .add('tim')
+ users.forEach(users => console.log(users))
 
