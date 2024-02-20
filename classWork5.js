@@ -17,10 +17,11 @@ const person = {
     street: "Some street",
     houseNum: 52
 }
-function calculationValue (obj){
+
+function calculationValue(obj) {
     if (typeof obj !== 'object') return console.log('Используемый аргумент должен иметь тип object');
     let result = 0;
-    let count = 0 ;
+    let count = 0;
     for (el in obj) {
         if (typeof obj[el] === 'number') {
             result += obj[el];
@@ -32,6 +33,7 @@ function calculationValue (obj){
 }
 
 console.log(calculationValue(person))
+
 /*
 2.
 //TODO: максимально часто встречающаяся задача на фронте
@@ -53,7 +55,7 @@ const formattedDate = formatDate(currentDate);
 Подсказка: Месяцы начинаются с нуля
 */
 function formatDate(date) {
-    let dateInfo = {
+    const dateInfo = {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
         day: date.getDate(),
@@ -64,9 +66,10 @@ function formatDate(date) {
     for (let key in dateInfo) {
         dateInfo[key] = addLeadingZero(dateInfo[key]);
     }
-    let formattedDate = `${dateInfo.day}.${dateInfo.month}.${dateInfo.year},${dateInfo.hours}:${dateInfo.minutes}:${dateInfo.seconds}`;
+    const formattedDate = `${dateInfo.day}.${dateInfo.month}.${dateInfo.year},${dateInfo.hours}:${dateInfo.minutes}:${dateInfo.seconds}`;
     return formattedDate;
 }
+
 function addLeadingZero(number) {
     return number < 10 ? '0' + number : number;
 }
@@ -83,18 +86,18 @@ console.log(formatDate(currentDate));
         return target
     }
  */
-function copyProperties (target,source){
-    if (typeof target !== 'object' || typeof source !== 'object'){
+function copyProperties(target, source) {
+    if (typeof target !== 'object' || typeof source !== 'object') {
         return console.log('Оба параметра должны иметь тип Object');
     }
-    let keys = Object.keys(source);
-    for (el of keys){
+    const keys = Object.keys(source);
+    for (el of keys) {
         target[el] = source[el];
     }
     return target
 }
 
-let target = { a: 1, b: 2 };
-let source = { b: 3, c: 4 };
-copyProperties(target,source);
+let target = {a: 1, b: 2};
+let source = {b: 3, c: 4};
+copyProperties(target, source);
 console.log(target)

@@ -17,16 +17,16 @@ const students = [
 3. Используя метод массива, создайте новый массив `topStudents`, содержащий 3 студентов с самыми высокими средними баллами.
 */
 const students = [
-    { name: 'Alice', grades: [85, 90, 92] },
-    { name: 'Bob', grades: [78, 80, 75] },
-    { name: 'Charlie', grades: [90, 92, 88] },
-    { name: 'Anna', grades: [99, 60, 83] },
-    { name: 'George', grades: [77, 82, 77] },
-    { name: 'Nick', grades: [70, 90, 83] },
+    {name: 'Alice', grades: [85, 90, 92]},
+    {name: 'Bob', grades: [78, 80, 75]},
+    {name: 'Charlie', grades: [90, 92, 88]},
+    {name: 'Anna', grades: [99, 60, 83]},
+    {name: 'George', grades: [77, 82, 77]},
+    {name: 'Nick', grades: [70, 90, 83]},
 ];
 
 function findTopStudents(students) {
-    if (typeof students !== 'object'){
+    if (typeof students !== 'object') {
         return console.log('Параметр должны иметь тип Object');
     }
     const newMassStudent = students.map(student => {
@@ -61,24 +61,6 @@ const result = myArray.findAndPush(3);
 console.log(result); // true, так как 3 был найден и перемещен
 console.log(myArray); // [1, 2, 4, 5, 3]
 */
-function findAndPush(array, searchElement) {
-    let foundIndex = -1;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === searchElement) {
-            foundIndex = i;
-            break;
-        }
-    }
-    if (foundIndex !== -1) {
-        const removedElement = array.splice(foundIndex, 1)[0];
-        array[array.length] = removedElement;
-        return true;
-    }
-    return false;
-}
-const array = [1, 2, 3, 4, 5];
-console.log(findAndPush(array,2))
-console.log(array);
 
 Array.prototype.findAndPush = function (searchElement) {
     let foundIndex = -1;
@@ -96,9 +78,9 @@ Array.prototype.findAndPush = function (searchElement) {
     return false;
 };
 
-const array2 = [1, 2, 3, 4, 5];
-console.log(array2.findAndPush(3))
-console.log(array2);
+const array = [1, 2, 3, 4, 5];
+console.log(array.findAndPush(3))
+console.log(array);
 
 //3
 /*Создайте функцию, которая принимает две даты в формате объекта `Date`
@@ -127,17 +109,17 @@ console.log(difference);
     - Используйте методы объекта `Date` для получения разных компонент времени (год, месяц, день, час, минута, секунда).
     - Учтите, что разница в месяцах может быть нецелым числом, поэтому нужно корректно обработать этот случай.
 */
-function dateDifference(date1, date2) {
-    if (typeof date1 !== 'object' || typeof date2 !== 'object'){
+function dateDifference(startDate, endDate) {
+    if (typeof startDate !== 'object' || typeof endDate !== 'object') {
         return console.log('Оба параметра должны иметь тип Object');
     }
     const difference = {};
-    difference.years = date2.getFullYear() - date1.getFullYear();
-    difference.months = date2.getMonth() - date1.getMonth();
-    difference.days = date2.getDate() - date1.getDate();
-    difference.hours = date2.getHours() - date1.getHours();
-    difference.minutes = date2.getMinutes() - date1.getMinutes();
-    difference.seconds = date2.getSeconds() - date1.getSeconds();
+    difference.years = endDate.getFullYear() - startDate.getFullYear();
+    difference.months = endDate.getMonth() - startDate.getMonth();
+    difference.days = endDate.getDate() - startDate.getDate();
+    difference.hours = endDate.getHours() - startDate.getHours();
+    difference.minutes = endDate.getMinutes() - startDate.getMinutes();
+    difference.seconds = endDate.getSeconds() - startDate.getSeconds();
     return difference;
 }
 
@@ -176,7 +158,7 @@ printStudentInfo(student);
 - Можете использовать шаблонные строки для формирования вывода.
  */
 function printStudentInfo(student) {
-    const { name, age, grade, address: { city, zip }, hobbies } = student;
+    const {name, age, grade, address: {city, zip}, hobbies} = student;
     const infoString = `Student: ${name}, Age: ${age}, Grade: ${grade}, City: ${city}, Zip: ${zip}, Hobbies: ${hobbies.join(', ')}`;
     console.log(infoString);
 }
@@ -231,7 +213,7 @@ const user = {
     name: "Boris",
     age: 24
 };
-const { name: firstName, age } = user;
-const newUser = { firstName, age };
+const {name: firstName, age} = user;
+const newUser = {firstName, age};
 
 console.log(newUser);
