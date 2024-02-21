@@ -217,3 +217,52 @@ const {name: firstName, age} = user;
 const newUser = {firstName, age};
 
 console.log(newUser);
+
+//6
+// Учитывая функцию fn, верните запоминаемую версию этой функции.
+//
+// Запоминаемая функция - это функция, которая никогда не будет вызываться дважды с одними и теми же входными данными. Вместо этого она вернет кэшированное значение.
+//
+// Вы можете предположить, что существует 3 возможные функции ввода: sum, fib и factorial.
+//
+// sum принимает два целых числа a и b и возвращает a + b.
+// fib принимает одно целое число n и возвращает 1, если n <= 1, или fib(n - 1) + fib(n - 2) в противном случае.
+// факториал принимает одно целое число n и возвращает 1, если n <= 1, или факториал(n - 1) * n в противном случае.
+//
+//
+// /**
+//  * let callCount = 0;
+//  * const memoizedFn = memoize(function (a, b) {
+//  *  callCount += 1;
+//  *   return a + b;
+//  * })
+//  * memoizedFn(2, 3) // 5
+//  * memoizedFn(2, 3) // 5
+//  * console.log(callCount) // 1
+//  */
+// function memoize(fn) {
+//return function(...args) {
+//}
+// }
+function memoize(fn) {
+    const cache = {};
+    return function (...args) {
+        const key = JSON.stringify(args);
+        if (cache[key] !== undefined) {
+            return cache[key];
+        }
+        const result = fn(...args);
+        cache[key] = result;
+        return result;
+    };
+}
+
+let callCount = 0;
+const memoizedFn = memoize(function (a, b) {
+    callCount += 1;
+    return a + b;
+});
+
+console.log(memoizedFn(2, 3));
+console.log(memoizedFn(2, 3));
+console.log(callCount);
