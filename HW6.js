@@ -46,6 +46,14 @@ function showMessage(string) {
     console.log(string)
 }
 
+function completeOrder(orderNumber, callback) {
+    if (orders[orderNumber]) {
+        orders[orderNumber] = {completed: true}
+        return callback(`Заказ с номером ${orderNumber} был выполнен`)
+    }
+    callback(`Заказ с номером ${orderNumber} не существует`)
+}
+
 function listOrders(callback, obj) {
     for (key in obj) {
         callback(`Заказ ${key} - Сумма ${obj[key].amount}, ${obj[key].completed}`)
@@ -53,6 +61,7 @@ function listOrders(callback, obj) {
 }
 
 addOrder(4, 12, showMessage)
+completeOrder(5, showMessage)
 listOrders(showMessage, orders)
 
 
