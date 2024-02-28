@@ -143,8 +143,8 @@ async function loadPostsData() {
     }
 }
 
-Promise.all([loadUserData3(), loadPostsData()]) //PROMISE API
-Promise.race([loadUserData3(), loadPostsData()])
+Promise.all([loadUserData3(), loadPostsData()])
+Promise.race([loadUserData3(), loadPostsData()])  //PROMISE API
 
 //5
 /*
