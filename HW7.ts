@@ -18,7 +18,7 @@ const check_1: number = c1 + 5;
 const check_2 = c2.substring(0);
 const check_3: boolean = c3[0];
 const check_4 = c3[1] + 5;
-const check_5 = c4.push("Alaikum salam");
+const check_5 = c4.push("lalaka");
 
 
 // 2 Задате типизацию и значения для a, b, c и d, так, чтобы
@@ -46,7 +46,7 @@ const q8: null = c[0];
 let e: any;
 
 const e1 = e;
-e.push("Salam");
+e.push("lalaka");
 const e2: boolean = e[2];
 const e3: [10, 15] = e;
 const e4: [string] = e;
@@ -56,10 +56,10 @@ const e5: Array<[string | 10]> = [...e[50]];
 /*
 //Укажите типы, чтобы не было ошибок компиляции*/
 let b1: { f: number | string } = {f: 15 + 15};
-b1 = {f: "Salam" + "Aleykum"};
+b1 = {f: "lalaka" + "malaka"};
 
 let b2: { f1?: number[] | boolean, f2: { f3: string } } = {f2: {f3: "lalaka"}};
-b2 = {f1: [10], f2: {f3: "Bunjorno"}};
+b2 = {f1: [10], f2: {f3: "malaka"}};
 
 let b3: { f1: boolean } = {f1: true};
 b3 = {f1: false};
@@ -91,12 +91,12 @@ function a5(...args: string[]): string {
 a1(10);
 a1(5 + 2);
 a2(10, true);
-a2("Bilo Slojno", false);
+a2("lalaka", false);
 a3();
 a3({});
-a3({f1: "No"});
+a3({f1: "malaka"});
 const _a4: number = a4();
-const _a5: string = a5(...["Y", "Ne zdalsa"]);
+const _a5: string = a5(...["lalaka", "malaka"]);
 
 
 
