@@ -22,7 +22,7 @@ const maxObject = getMaxValue(objects); // Ожидаем, что maxObject бу
 }*/
 
 
-function getMaxValue<T>(mas:T[]) : T {
+function getMaxValue<T extends number | string>(mas:T[]) : T {
     return mas.reduce((max, current) => {
         if (typeof current === 'object' && 'value' in current) {
             return current['value'] > max['value'] ? current : max;
