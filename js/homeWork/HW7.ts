@@ -116,5 +116,30 @@ type spaceXLength = Length<spaceX>;
 
 
 
+ interface IType{
+     name:string,
+     age:number,
+ }
+
+ interface IType2 extends IType{
+     phoneNumber:number
+ }
+
+ const obj = {
+     name: 'vyusal',
+     age:24,
+     phoneNumber:23456
+}
+
+function getPerson (obj:IType2) {
+    console.log(`имя ${obj.name}`)
+}
+getPerson(obj)
 
 
+const fff = <T> (obj:T) : T => obj
+
+
+function efrw<T> (data:T) :T {
+    return data
+}
