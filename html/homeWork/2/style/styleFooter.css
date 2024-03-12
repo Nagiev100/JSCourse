@@ -1,0 +1,75 @@
+.footer{
+    width: 100%;
+    height: 17.3vw;
+    margin-top: 2.7vw;
+    background-color: #0C0C0E;
+    padding: 0 1.3vw 0 1.3vw;
+}
+.containerFooter{
+    background-color: #0C0C0E;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.3vw 0 1.3vw 0 ;
+}
+.footer__contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.footer__contact:before{
+    position: absolute;
+    content: '';
+    width: 97.5vw;
+    height: 1px;
+    background-color: #FFFFFF;
+    margin-top: 7.6vw;
+
+}
+.contact__address{
+    font-family: Inter,serif;
+    max-width: 15.9vw;
+    color: #FFFFFF;
+    font-size: 1vw;
+    font-weight: 400;
+    line-height: 1.3vw;
+    text-align: left;
+}
+
+.contact__icon{
+    padding-top: 0.6vw;
+    display: flex;
+    column-gap: 1vw;
+}
+.icon__footer{
+    width: 1.6vw;
+    height: 1.6vw;
+    cursor: pointer;
+}
+.footer__address{
+    display: flex;
+    flex-direction: column;
+}
+.address{
+    font-family: Inter,serif;
+    color: #FFFFFF;
+    font-size: 1vw;
+    font-weight: 400;
+    line-height: 1.3vw;
+    text-align: right;
+}
+.footer__company{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5vw;
+}
+.company__span{
+    font-family: Inter,serif;
+    color: #FFFFFF;
+    font-size: 1.3vw;
+    font-weight: 400;
+    line-height: 1.3vw;
+    letter-spacing: 2px;
+    text-align: center;
+}
