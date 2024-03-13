@@ -1,5 +1,4 @@
 .footer{
-    width: 100%;
     height: 17.3vw;
     margin-top: 2.7vw;
     background-color: #0C0C0E;
@@ -76,4 +75,39 @@
     line-height: 1.3vw;
     letter-spacing: 2px;
     text-align: center;
+}
+@media screen and (max-width: 900px) {
+    .footer{
+        height: 32.9vw;
+    }
+    .container__contact{
+        padding-top: 2vw;
+    }
+    .contact__address{
+        font-size: 1.9vw;
+    }
+    .contact__icon{
+        column-gap: 2vw;
+        padding-top: 4vw;
+    }
+    .icon__footer{
+        width: 3vw;
+        height: 3vw;
+    }
+    .address{
+      font-size: 2vw;
+        line-height: 3vw;
+    }
+    .footer__address{
+       padding-top: 2vw;
+    }
+    .footer__contact:before{
+        margin-top: 18vw;
+    }
+    .footer__company{
+        padding-top: 7.5vw;
+    }
+    .company__span{
+        font-size: 2.8vw;
+    }
 }

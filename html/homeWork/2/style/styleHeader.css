@@ -5,14 +5,12 @@
 
 .header{
     background-color: #0C0C0E;
-
-
-
 }
 .container{
     background-color: #0C0C0E;
     display: flex;
     align-items: center;
+    width: 100%;
     /*padding: 1.6vw 0 1.3vw 0 ;*/
 
 }
@@ -71,18 +69,38 @@
 }
 
 @media screen and (max-width: 900px) {
-
    .header__nav__list{
        display: none;
    }
     .header__icon__burger{
         display: block;
-        width:3.1vw;
-        height: 1.3vw;
+        width:5vw;
+        height: 3.1vw;
         cursor: pointer;
     }
-    .header__group__icon{
-        padding-left: 39vw;
+    .header__icon__profile{
+        width:5vw;
+        cursor: pointer;
+        height: 3.6vw;
     }
+    .header__group__icon{
+       width: 100%;
+        padding-right: 45px;
+        padding-top: 30px;
+        column-gap: 3.4vw;
+
+    }
+ .header__nav{
+     padding: 0;
+ }
+ .container{
+     justify-content: space-between;
+ }
+    .span__logo{
+        padding-top: 40px;
+        padding-left: 10px;
+        font-size: 4vw;
+    }
+
 }
 
