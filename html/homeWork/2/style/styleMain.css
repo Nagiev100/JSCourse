@@ -6,12 +6,29 @@
     box-sizing: border-box;
 }
 .main__promo{
-    background-image: url('../img/Welcome.png');
+    background-image: url('../img/Welcome.jpeg');
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 41.6vw;
+    height: 42.6vw;
 }
+.promo__container{
+    background-color: #0C0C0E;
+    text-transform: uppercase;
+    width: 41.6vw;
+    height: 15.2vw;
+    margin-top:15.2vw;
+    padding-top: 2.7vw;
+    padding-right: 2vw;
+    color: #FFFFFF;
+    font-family: Forum,serif;
+    font-size: 2.7vw;
+    font-weight: 400;
+    line-height: 3.4vw;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
 .main__container__about{
     display: flex;
     flex-direction: column;
@@ -29,6 +46,7 @@
     text-align: left;
     position: relative;
     padding-top: 1.3vw;
+    padding-right: 1.2vw;
 }
 .about__title::after {
     content: '';
@@ -41,10 +59,10 @@
 }
 .about__span{
     font-family: Inter,serif;
-    padding-top: 2.7vw;
+    padding-top: 5vw;
     font-size: 1.3vw;
     font-weight: 400;
-    line-height: 2.7vw;
+    letter-spacing: 1px;
     text-align: center;
 }
 
@@ -54,6 +72,7 @@
     padding-top: 1.3vw;
     width: 92.2vw;
     margin: 0 auto;
+    padding-left: 1.3vw;
 }
 .slider__container{
     overflow: hidden;
@@ -61,7 +80,7 @@
 }
 .slider__track{
     display: flex;
-    width:  92.2vw  ;
+    width:  97.2vw  ;
     flex-wrap: nowrap;
     justify-content: space-between;
     transition: .2s;
@@ -70,7 +89,8 @@
 
 .slider__buttons{
     margin: 0 auto;
-    padding-top: 2.7vw;
+    padding-top: 3.5vw;
+    padding-left: 3vw;
     align-items: center;
     display: flex;
 }
@@ -82,7 +102,7 @@
 
 .test {
     display: flex;
-    grid-gap: 1vw;
+    grid-gap: 1.7vw;
     flex-wrap: nowrap;
 }
  .laptop_only {
@@ -94,7 +114,7 @@
      width: 1.1vw;
      height: 1.1vw;
      background-color: #0C0C0E;
-     margin-left: 16px;
+     margin-left: 10px;
      border-radius: 16px;
      border: none;
      outline: none;
@@ -107,14 +127,14 @@
         grid-gap: 0;
     }
     .img{
-        width:  57.6vw;
-        height: 73.6vw;
+        width:  31.2vw;
+        height: 38.8vw;
     }
     .laptop_only {
         display: block;
     }
     .wrapper{
-        width:57.6vw
+        width:31.2vw
     }
 }
 

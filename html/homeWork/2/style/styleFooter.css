@@ -23,7 +23,7 @@
     width: 97.5vw;
     height: 1px;
     background-color: #FFFFFF;
-    margin-top: 7.6vw;
+    margin-top: 8vw;
 
 }
 .contact__address{
@@ -38,7 +38,7 @@
 }
 
 .contact__icon{
-    padding-top: 0.6vw;
+    padding-top: 1.5vw;
     display: flex;
     column-gap: 1vw;
 }
@@ -50,6 +50,8 @@
 .footer__address{
     display: flex;
     flex-direction: column;
+    padding-right: 1vw;
+
 }
 .address{
     font-family: Inter,serif;
@@ -58,12 +60,13 @@
     font-weight: 400;
     line-height: 1.3vw;
     text-align: right;
+    margin-top: 0.5vw;
 }
 .footer__company{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 5vw;
+    padding-top: 4vw;
 }
 .company__span{
     font-family: Inter,serif;

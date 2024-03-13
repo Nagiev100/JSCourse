@@ -5,20 +5,24 @@
 
 .header{
     background-color: #0C0C0E;
-    padding: 0 1.3vw 0 1.3vw;
+
+
+
 }
 .container{
     background-color: #0C0C0E;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.6vw 0 1.3vw 0 ;
+    /*padding: 1.6vw 0 1.3vw 0 ;*/
 
 }
 .span__logo{
+    padding-top: 1.3vw;
+    padding-left: 1.3vw;
+    padding-bottom: 1.3vw;
     font-family: Forum,serif;
     color: #FFFFFF;
-    font-size: 2vw;
+    font-size: 2.0vw;
     font-weight: 400;
     letter-spacing: 0.02em;
     text-align: left;
@@ -28,6 +32,9 @@
     display: flex;
     align-items: center;
     column-gap: 2.7vw;
+    padding-left: 31.5vw;
+    /*padding-right: 1.1vw;
+    padding-bottom: 0.3vw;*/
 }
 
 .header__nav__list{
@@ -42,7 +49,7 @@
 .list__link{
     font-family: Inter,serif;
     color:#FFFFFF;
-    font-size: 1.3vw;
+    font-size: 1.4vw;
     font-weight: 400;
     text-decoration: none;
 }
@@ -64,6 +71,7 @@
 }
 
 @media screen and (max-width: 900px) {
+
    .header__nav__list{
        display: none;
    }
@@ -72,6 +80,9 @@
         width:3.1vw;
         height: 1.3vw;
         cursor: pointer;
+    }
+    .header__group__icon{
+        padding-left: 39vw;
     }
 }
 
