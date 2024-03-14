@@ -11,11 +11,12 @@
     display: flex;
     align-items: center;
     width: 100%;
-    /*padding: 1.6vw 0 1.3vw 0 ;*/
+    margin-top: -0.5vw;
+
 
 }
 .span__logo{
-    padding-top: 1.3vw;
+    padding-top: 1.2vw;
     padding-left: 1.3vw;
     padding-bottom: 1.3vw;
     font-family: Forum,serif;
@@ -31,6 +32,7 @@
     align-items: center;
     column-gap: 2.7vw;
     padding-left: 31.5vw;
+
     /*padding-right: 1.1vw;
     padding-bottom: 0.3vw;*/
 }
@@ -69,6 +71,8 @@
 }
 
 @media screen and (max-width: 900px) {
+
+
    .header__nav__list{
        display: none;
    }
@@ -86,7 +90,7 @@
     .header__group__icon{
        width: 100%;
         padding-right: 45px;
-        padding-top: 30px;
+        padding-top: 35px;
         column-gap: 3.4vw;
 
     }
@@ -94,6 +98,7 @@
      padding: 0;
  }
  .container{
+     margin-top: -0.5vw;
      justify-content: space-between;
  }
     .span__logo{

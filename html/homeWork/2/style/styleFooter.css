@@ -37,7 +37,7 @@
 }
 
 .contact__icon{
-    padding-top: 1.5vw;
+    padding-top: 1vw;
     display: flex;
     column-gap: 1vw;
 }
@@ -88,7 +88,7 @@
     }
     .contact__icon{
         column-gap: 2vw;
-        padding-top: 4vw;
+        padding-top: 3vw;
     }
     .icon__footer{
         width: 3vw;
