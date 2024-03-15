@@ -60,7 +60,7 @@
 }
 .about__span{
     font-family: Inter,serif;
-    padding-top: 5.6vw;
+    padding-top: 4vw;
     padding-right: 0.3vw;
     font-size: 1.3vw;
     font-weight: 400;
@@ -71,7 +71,7 @@
 .wrapper{
     display: flex;
     flex-direction: column;
-    padding-top: 1.3vw;
+    padding-top: 2vw;
     width: 92.2vw;
     margin: 0 auto;
     padding-left: 1.3vw;
@@ -92,6 +92,7 @@
 .slider__buttons{
     margin: 0 auto;
     padding-top: 3.5vw;
+    padding-right: 3.7vw;
     padding-left: 3vw;
     align-items: center;
     display: flex;
@@ -137,7 +138,7 @@
     }
     .wrapper{
         width:59.2vw;
-        margin-top: 40px;
+        margin-top: 10px;
     }
     .main__promo{
         height: 80.6vw;
@@ -147,20 +148,24 @@
         height: 28vw;
         margin-top:30.2vw;
         padding-top: 6vw;
+        padding-left: 1.9vw;
         font-size: 5vw;
         line-height: 6vw;
     }
   .about__title{
       font-size: 5vw;
       padding-top: 3vw;
+      padding-left: 2.7vw;
   }
   .about__title::after{
       bottom: -4.5vw;
+      left: 40px;
       width: 55px;
   }
   .about__span{
       font-size: 2.5vw;
       padding-top: 10vw;
+      line-height: 1.9;
   }
   .slider_item{
       width: 2vw;
@@ -216,4 +221,7 @@
     color:#FFFFFF;
     text-decoration: none;
 
+}
+.team{
+    padding-left: 3vw;
 }
