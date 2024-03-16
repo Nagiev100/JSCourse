@@ -82,7 +82,7 @@
 }
 .slider__track{
     display: flex;
-    width:  97.2vw  ;
+    width:97vw;
     flex-wrap: nowrap;
     justify-content: space-between;
     transition: .2s;
