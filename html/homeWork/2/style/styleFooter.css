@@ -37,9 +37,9 @@
 }
 
 .contact__icon{
-    padding-top: 1vw;
     display: flex;
     column-gap: 1vw;
+    padding-top: 18px;
 }
 .icon__footer{
     width: 1.6vw;
@@ -81,7 +81,7 @@
         height: 32.9vw;
     }
     .container__contact{
-        padding-top: 2vw;
+        padding-top: 3vw;
     }
     .contact__address{
         font-size: 1.9vw;
@@ -93,6 +93,7 @@
     .icon__footer{
         width: 3vw;
         height: 3vw;
+        margin-bottom:1vw ;
     }
     .address{
       font-size: 2vw;

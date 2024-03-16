@@ -11,7 +11,6 @@ const colorButtons = (idx) =>  sliderButtons.forEach(i=>{
 
 sliderButtons.forEach((btn, index)=>{
     btn.addEventListener('click', ()=>{
-        console.log("predd", index)
         currentIndex = index;
         position = -(currentIndex * container.clientWidth);
         colorButtons();

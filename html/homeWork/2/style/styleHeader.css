@@ -30,7 +30,7 @@
 .header__nav{
     display: flex;
     align-items: center;
-    column-gap: 2.7vw;
+    column-gap: 2.0vw;
     padding-left: 31.5vw;
 
     /*padding-right: 1.1vw;
@@ -42,6 +42,8 @@
     align-items: center;
     column-gap: 2vw;
     list-style: none;
+    padding-top: 1vw;
+
 }
 .header__nav__item{
 
@@ -52,6 +54,7 @@
     font-size: 1.4vw;
     font-weight: 400;
     text-decoration: none;
+    letter-spacing:0.6px;
 }
 .list__link:hover {
     text-decoration: underline;
@@ -60,6 +63,8 @@
     display: flex;
     align-items: center;
     column-gap: 2.7vw;
+    padding-right: 10px;
+    padding-top: 6px;
 }
 .header__icon__profile{
     width: 1.9vw;

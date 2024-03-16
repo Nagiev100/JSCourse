@@ -98,8 +98,8 @@
     display: flex;
 }
 .img{
-    width: 30.1vw;
-    height: 38.8vw;
+    width: 450px;
+    height: 560px;
 }
 
 
@@ -224,4 +224,7 @@
 }
 .team{
     padding-left: 3vw;
+}
+.slider__buttons{
+    padding-top: 3vw;
 }
