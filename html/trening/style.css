@@ -1,0 +1,30 @@
+/*
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background-color: grey;
+}
+.container{
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.nav__list{
+    display: flex;
+}
+
+
+.block {
+    width: 100%;
+    height: 300px;
+}*/
+
+
