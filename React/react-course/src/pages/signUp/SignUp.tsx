@@ -11,6 +11,7 @@ interface SignUpFormData {
     login: string;
     password: string;
     returnPassword: string;
+
 }
 
 export const SignUp: FC = () => {
@@ -45,7 +46,6 @@ export const SignUp: FC = () => {
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            // Преобразование изображения в URL
             const imageURL = URL.createObjectURL(file);
             setImageUrl(imageURL);
         }
