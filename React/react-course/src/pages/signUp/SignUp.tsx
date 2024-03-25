@@ -1,4 +1,4 @@
-import {ChangeEvent, FC, useRef, useState} from "react";
+import {ChangeEvent, FC, useEffect, useRef, useState} from "react";
 import {useForm} from "react-hook-form";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
@@ -11,15 +11,20 @@ interface SignUpFormData {
     login: string;
     password: string;
     returnPassword: string;
-
 }
 
 export const SignUp: FC = () => {
     const [typePassword, setTypePassword] = useState("password");
     const [typeReturnPassword, setTypeReturnPassword] = useState("password");
+    const [token, setToken] = useState('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567');
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
     const navigator = useNavigate();
+    const [password, setPassword] = useState('Sem12045');
+    const [passwordReturn, setPasswordReturn] = useState('Sem12045');
+    const [login,setLogin] = useState('Vyusal');
+
+
     const {
         handleSubmit,
         register,
@@ -37,12 +42,14 @@ export const SignUp: FC = () => {
             });
         } else {
             try {
-                navigator('/Home')
+                 localStorage.setItem("token",token);
+                 navigator('/')
             } catch (error) {
                 console.error('Error submitting form:', error);
             }
         }
     };
+
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
@@ -57,6 +64,7 @@ export const SignUp: FC = () => {
     };
 
 
+
     return (
         <Container>
             <Wrapper>
@@ -67,6 +75,7 @@ export const SignUp: FC = () => {
                 <FormSignUp onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor='login'>Login</Label>
                     <Input
+                        value={login}
                         borderColor={errors?.login ? "#FF768E" : "#F6F6F6"}
                         id='login'
                         {...register('login', {
@@ -79,7 +88,6 @@ export const SignUp: FC = () => {
                                 value: 12,
                                 message: 'The maximum login length should be no more than 12 characters'
                             }
-
                         })}
                     />
                     <ContainerErrors>
@@ -88,6 +96,7 @@ export const SignUp: FC = () => {
                     <ContainerInput>
                         <Label htmlFor='password'>Password</Label>
                         <Input
+                            value={password}
                             borderColor={errors?.password ? "#FF768E" : "#F6F6F6"}
                             id='password'
                             type={typePassword}
@@ -123,6 +132,7 @@ export const SignUp: FC = () => {
                     <ContainerInput>
                         <Label htmlFor='returnPassword'>Return Password</Label>
                         <Input
+                            value={passwordReturn}
                             borderColor={errors?.returnPassword ? "#FF768E" : "#F6F6F6"}
                             id='returnPassword'
                             type={typeReturnPassword}
