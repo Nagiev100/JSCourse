@@ -6,6 +6,7 @@ import {Input} from "../../components/input/input";
 import closeEye from "../../assests/icon/close_eye.svg";
 import openEye from "../../assests/icon/eye_rounded.svg";
 import cllickerPhoto from '../../assests/icon/cllickerPhoto.svg'
+import {generateId} from "../../helpers/GenerateId";
 
 interface SignUpFormData {
     login: string;
@@ -16,13 +17,12 @@ interface SignUpFormData {
 export const SignUp: FC = () => {
     const [typePassword, setTypePassword] = useState("password");
     const [typeReturnPassword, setTypeReturnPassword] = useState("password");
-    const [token, setToken] = useState('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567');
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
     const navigator = useNavigate();
-    const [password, setPassword] = useState('Sem12045');
-    const [passwordReturn, setPasswordReturn] = useState('Sem12045');
-    const [login,setLogin] = useState('Vyusal');
+    const [password, setPassword] = useState('Vyusal2222');
+    const [passwordReturn, setPasswordReturn] = useState('Vyusal2222');
+    const [login, setLogin] = useState('Vyusal');
 
 
     const {
@@ -42,8 +42,9 @@ export const SignUp: FC = () => {
             });
         } else {
             try {
-                 localStorage.setItem("token",token);
-                 navigator('/')
+                const newToken = generateId();
+                localStorage.setItem("token", newToken);
+                navigator('/')
             } catch (error) {
                 console.error('Error submitting form:', error);
             }
@@ -62,8 +63,6 @@ export const SignUp: FC = () => {
             filePicker.current.click();
         }
     };
-
-
 
     return (
         <Container>
