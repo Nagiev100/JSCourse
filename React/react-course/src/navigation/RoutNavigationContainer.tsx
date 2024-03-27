@@ -3,22 +3,23 @@ import {Route, Routes} from "react-router-dom";
 import {SignUp} from "../pages/signUp/SignUp";
 import {Home} from "../pages/home/Home";
 import {NotFoundPage} from "../pages/notFoundPage/NotFoundPage";
-import {ProtectedRoute} from "./ProtectedRoad";
+import {ProtectedRoad} from "./ProtectedRoad";
 
 
 
 export const RoutNavigationContainer: FC = () => {
     return(
-        <>
-            <Routes>
-                <Route path='SignUp' element={<SignUp/>}/>
-                <Route path='/' element=
-                    {
-                        <ProtectedRoute>
-                            <Home/>
-                        </ProtectedRoute>
-                    }/>
-                <Route path='*' element={<NotFoundPage/>}/>
-            </Routes></>
+        <Routes>
+            <Route path='SignUp' element={<SignUp/>}/>
+            <Route path='/' element=
+                {
+                    <ProtectedRoad>
+                        <Home/>
+                    </ProtectedRoad>
+                }/>
+            <Route path='*' element={<NotFoundPage/>}/>
+        </Routes>
+
+
     )
 }

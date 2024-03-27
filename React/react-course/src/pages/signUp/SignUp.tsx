@@ -1,12 +1,18 @@
-import {ChangeEvent, FC, useEffect, useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {ChangeEvent, FC, useRef, useState} from "react";
 import {useForm} from "react-hook-form";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-import {Input} from "../../components/input/input";
+import {Input} from "../../components/input";
 import closeEye from "../../assests/icon/close_eye.svg";
 import openEye from "../../assests/icon/eye_rounded.svg";
-import cllickerPhoto from '../../assests/icon/cllickerPhoto.svg'
-import {generateId} from "../../helpers/GenerateId";
+import clickerPhoto from '../../assests/icon/cllickerPhoto.svg'
+import {generateId} from "../../helpers/generateId";
+import {validationInputLogin, validationInputPassword} from "../../helpers/validateInput";
+import {SignUpSlogan} from "../../components/SignUpSlogan";
+import {SignUpPicker} from "../../components/SignUpPicker";
+import {PasswordToggle} from "../../components/SignUpPasswordIcon";
+import {ErrorContainer} from "../../components/SignUpErrorContainer";
+import {SignUpButton} from "../../components/Button";
 
 interface SignUpFormData {
     login: string;
@@ -24,7 +30,6 @@ export const SignUp: FC = () => {
     const [passwordReturn, setPasswordReturn] = useState('Vyusal2222');
     const [login, setLogin] = useState('Vyusal');
 
-
     const {
         handleSubmit,
         register,
@@ -34,19 +39,19 @@ export const SignUp: FC = () => {
         mode: 'onBlur',
     });
 
-    const onSubmit = async (data: SignUpFormData) => {
+    const onSubmit = (data: SignUpFormData) => {
         if (data.password !== data.returnPassword) {
             setError("returnPassword", {
                 type: "manual",
                 message: "Passwords do not match",
             });
         } else {
-            try {
-                const newToken = generateId();
+            const newToken = generateId();
+            if (newToken) {
                 localStorage.setItem("token", newToken);
-                navigator('/')
-            } catch (error) {
-                console.error('Error submitting form:', error);
+                navigator('/');
+            } else {
+                console.error('Error generating token');
             }
         }
     };
@@ -58,6 +63,7 @@ export const SignUp: FC = () => {
             setImageUrl(imageURL);
         }
     };
+
     const handlePick = () => {
         if (filePicker.current !== null) {
             filePicker.current.click();
@@ -67,31 +73,19 @@ export const SignUp: FC = () => {
     return (
         <Container>
             <Wrapper>
-                <SloganSignUp>Sign Up</SloganSignUp>
-                <ContainerPicker backgroundImage={imageUrl} onClick={handlePick}>
-                    <img src={cllickerPhoto} alt='icon'/>
-                </ContainerPicker>
+                <SignUpSlogan>Sign Up</SignUpSlogan>
+                <SignUpPicker backgroundImage={imageUrl} onClick={handlePick}>
+                    <img src={clickerPhoto} alt="icon"/>
+                </SignUpPicker>
                 <FormSignUp onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor='login'>Login</Label>
                     <Input
                         value={login}
                         borderColor={errors?.login ? "#FF768E" : "#F6F6F6"}
                         id='login'
-                        {...register('login', {
-                            required: 'Login is required',
-                            minLength: {
-                                value: 6,
-                                message: 'The minimum login length should be at least 6 characters'
-                            },
-                            maxLength: {
-                                value: 12,
-                                message: 'The maximum login length should be no more than 12 characters'
-                            }
-                        })}
+                        {...register('login', validationInputLogin)}
                     />
-                    <ContainerErrors>
-                        {errors.login && <ErrorsP>{errors.login.message}</ErrorsP>}
-                    </ContainerErrors>
+                    <ErrorContainer error={errors.login && errors.login.message}/>
                     <ContainerInput>
                         <Label htmlFor='password'>Password</Label>
                         <Input
@@ -99,34 +93,15 @@ export const SignUp: FC = () => {
                             borderColor={errors?.password ? "#FF768E" : "#F6F6F6"}
                             id='password'
                             type={typePassword}
-                            {...register('password', {
-                                required: 'Password is required',
-                                pattern: {
-                                    value: /^(?=.*[A-Z])(?=.*[0-9]).+$/,
-                                    message: "Password must contain at least one uppercase letter and one digit",
-                                },
-                                minLength: {
-                                    value: 8,
-                                    message: 'The minimum password length should be 8 characters'
-                                },
-                                maxLength: {
-                                    value: 14,
-                                    message: 'The maximum password length should be 14 characters'
-                                }
-                            })}
+                            {...register('password', validationInputPassword)}
                         />
-                        {typePassword === "password" ? (
-                            <ContainerIcon onClick={() => setTypePassword("text")}>
-                                <img src={closeEye} alt={'Icon'}/>
-                            </ContainerIcon>
-                        ) : (
-                            <ContainerIcon onClick={() => setTypePassword("password")}>
-                                <img src={openEye} alt={'Icon'}/>
-                            </ContainerIcon>
-                        )}
-                        <ContainerErrors>
-                            {errors.password && <ErrorsP>{errors.password.message}</ErrorsP>}
-                        </ContainerErrors>
+                        <PasswordToggle
+                            type={typePassword}
+                            onToggle={() => setTypePassword(typePassword === 'password' ? 'text' : 'password')}
+                            closeEyeSrc={closeEye}
+                            openEyeSrc={openEye}
+                        />
+                        <ErrorContainer error={errors.password && errors.password.message}/>
                     </ContainerInput>
                     <ContainerInput>
                         <Label htmlFor='returnPassword'>Return Password</Label>
@@ -137,24 +112,15 @@ export const SignUp: FC = () => {
                             type={typeReturnPassword}
                             {...register('returnPassword', {required: 'Return Password is required'})}
                         />
-                        {typeReturnPassword === "password" ? (
-                            <ContainerIcon onClick={() => setTypeReturnPassword("text")}>
-                                <img src={closeEye} alt={'Icon'}/>
-                            </ContainerIcon>
-                        ) : (
-                            <ContainerIcon
-                                onClick={() => setTypeReturnPassword("password")}
-                            >
-                                <img src={openEye} alt={'Icon'}/>
-                            </ContainerIcon>
-                        )}
-                        <ContainerErrors>
-                            {errors.returnPassword && <ErrorsP>{errors.returnPassword.message}</ErrorsP>}
-                        </ContainerErrors>
+                        <PasswordToggle
+                            type={typeReturnPassword}
+                            onToggle={() => setTypeReturnPassword(typeReturnPassword === 'password' ? 'text' : 'password')}
+                            closeEyeSrc={closeEye}
+                            openEyeSrc={openEye}
+                        />
+                        <ErrorContainer error={errors.returnPassword && errors.returnPassword.message}/>
                     </ContainerInput>
-                    <ButtonSignUp type='submit' disabled={!isValid || !imageUrl}>
-                        Submit
-                    </ButtonSignUp>
+                    <SignUpButton type={'submit'} disabled={!isValid || !imageUrl}>Submit</SignUpButton>
                     <FileInput
                         type="file"
                         ref={filePicker}
@@ -162,9 +128,7 @@ export const SignUp: FC = () => {
                     />
                 </FormSignUp>
             </Wrapper>
-
         </Container>
-
     );
 };
 
@@ -181,17 +145,6 @@ const Wrapper = styled.div`
   margin: 0 auto;
 
 `
-const ContainerPicker = styled.div<{ backgroundImage?: string }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: ${(props) => props.backgroundImage && `url(${props.backgroundImage})`};
-  background-color: grey;
-  background-size: cover;
-  width: 300px;
-  height: 200px;
-  border: 1px solid black;
-`
 const FileInput = styled.input`
   opacity: 0;
   height: 0;
@@ -201,14 +154,6 @@ const FileInput = styled.input`
   padding: 0;
   margin: 0;
 `;
-const SloganSignUp = styled.h2`
-  color: #344472;
-  width: 130px;
-  height: 50px;
-  font-size: 36px;
-  font-weight: 400;
-  margin: 0 auto;
-`
 const FormSignUp = styled.form`
   display: flex;
   flex-direction: column;
@@ -219,43 +164,6 @@ const Label = styled.label`
   font-weight: 500;
   line-height: 24px;
   margin-top: 26px;
-`
-const ContainerErrors = styled.div`
-  height: 2px;
-`;
-const ErrorsP = styled.p`
-  color: #ff768e;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-`;
-const ContainerIcon = styled.div`
-  position: absolute;
-  content: "";
-  top: 62px;
-  left: 340px;
-`;
-const ButtonSignUp = styled.button`
-  background-color: #e4163a;
-  color: #ffffff;
-  border: none;
-  padding: 0;
-  width: 365px;
-  margin-top: 24px;
-  height: 40px;
-
-  &:hover {
-    background-color: #ff5761;
-  }
-
-  &:active {
-    background-color: #c60e2e;
-  }
-
-  &:disabled {
-    background-color: #f6f6f6;
-    color: #d1d1d1;
-  }
 `
 const ContainerInput = styled.div`
   display: flex;
