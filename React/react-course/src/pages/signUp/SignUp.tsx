@@ -21,11 +21,11 @@ interface SignUpFormData {
 }
 
 export const SignUp: FC = () => {
+    const navigator = useNavigate();
     const [typePassword, setTypePassword] = useState("password");
     const [typeReturnPassword, setTypeReturnPassword] = useState("password");
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
-    const navigator = useNavigate();
     const [password, setPassword] = useState('Vyusal2222');
     const [passwordReturn, setPasswordReturn] = useState('Vyusal2222');
     const [login, setLogin] = useState('Vyusal');
@@ -49,6 +49,10 @@ export const SignUp: FC = () => {
             const newToken = generateId();
             if (newToken) {
                 localStorage.setItem("token", newToken);
+                localStorage.setItem("login", data.login);
+                if (imageUrl){
+                    localStorage.setItem('img',imageUrl)
+                }
                 navigator('/');
             } else {
                 console.error('Error generating token');
