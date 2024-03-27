@@ -25,4 +25,5 @@ const ContainerPickerWrapper = styled.div<{ backgroundImage?: string }>`
   width: 300px;
   height: 200px;
   border: 1px solid black;
+  cursor: pointer;
 `;
