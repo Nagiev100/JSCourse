@@ -2,33 +2,34 @@ import {useNavigate} from "react-router-dom";
 import {ChangeEvent, FC, useRef, useState} from "react";
 import {useForm} from "react-hook-form";
 import styled from "styled-components";
-import {Input} from "../../components/input";
+import {Input} from "../../helpers/style/input";
 import closeEye from "../../assests/icon/close_eye.svg";
 import openEye from "../../assests/icon/eye_rounded.svg";
 import clickerPhoto from '../../assests/icon/cllickerPhoto.svg'
 import {generateId} from "../../helpers/generateId";
 import {validationInputLogin, validationInputPassword} from "../../helpers/validateInput";
-import {SignUpSlogan} from "../../components/SignUpSlogan";
-import {SignUpPicker} from "../../components/SignUpPicker";
-import {PasswordToggle} from "../../components/SignUpPasswordIcon";
-import {ErrorContainer} from "../../components/SignUpErrorContainer";
+import {Slogan} from "../../components/Slogan";
+import {Picker} from "../../components/Picker";
+import {PasswordToggle} from "../../components/PasswordIcon";
+import {ErrorContainer} from "../../components/ErrorContainer";
 import {SignUpButton} from "../../components/Button";
+import {COLORS} from "../../helpers/style/colors";
 
 interface SignUpFormData {
     login: string;
     password: string;
-    returnPassword: string;
+    repeatPass: string;
 }
 
 export const SignUp: FC = () => {
     const navigator = useNavigate();
     const [typePassword, setTypePassword] = useState("password");
-    const [typeReturnPassword, setTypeReturnPassword] = useState("password");
+    const [typeRepeatPassword, setTypeRepeatPassword] = useState("password");
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
-    const [password, setPassword] = useState('Vyusal2222');
+    /*const [password, setPassword] = useState('Vyusal2222');
     const [passwordReturn, setPasswordReturn] = useState('Vyusal2222');
-    const [login, setLogin] = useState('Vyusal');
+    const [login, setLogin] = useState('Vyusal');*/
 
     const {
         handleSubmit,
@@ -40,8 +41,8 @@ export const SignUp: FC = () => {
     });
 
     const onSubmit = (data: SignUpFormData) => {
-        if (data.password !== data.returnPassword) {
-            setError("returnPassword", {
+        if (data.password !== data.repeatPass) {
+            setError("repeatPass", {
                 type: "manual",
                 message: "Passwords do not match",
             });
@@ -77,15 +78,15 @@ export const SignUp: FC = () => {
     return (
         <Container>
             <Wrapper>
-                <SignUpSlogan>Sign Up</SignUpSlogan>
-                <SignUpPicker backgroundImage={imageUrl} onClick={handlePick}>
+                <Slogan>Sign Up</Slogan>
+                <Picker backgroundImage={imageUrl} onClick={handlePick}>
                     <img src={clickerPhoto} alt="icon"/>
-                </SignUpPicker>
+                </Picker>
                 <FormSignUp onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor='login'>Login</Label>
                     <Input
-                        value={login}
-                        borderColor={errors?.login ? "#FF768E" : "#F6F6F6"}
+                        /*value={login}*/
+                        borderColor={errors?.login ? COLORS.Red : COLORS.White}
                         id='login'
                         {...register('login', validationInputLogin)}
                     />
@@ -93,8 +94,8 @@ export const SignUp: FC = () => {
                     <ContainerInput>
                         <Label htmlFor='password'>Password</Label>
                         <Input
-                            value={password}
-                            borderColor={errors?.password ? "#FF768E" : "#F6F6F6"}
+                            /*value={password}*/
+                            borderColor={errors?.password ? COLORS.Red : COLORS.White}
                             id='password'
                             type={typePassword}
                             {...register('password', validationInputPassword)}
@@ -110,19 +111,19 @@ export const SignUp: FC = () => {
                     <ContainerInput>
                         <Label htmlFor='returnPassword'>Return Password</Label>
                         <Input
-                            value={passwordReturn}
-                            borderColor={errors?.returnPassword ? "#FF768E" : "#F6F6F6"}
+                            /*value={passwordReturn}*/
+                            borderColor={errors?.repeatPass ? COLORS.Red : COLORS.White}
                             id='returnPassword'
-                            type={typeReturnPassword}
-                            {...register('returnPassword', {required: 'Return Password is required'})}
+                            type={typeRepeatPassword}
+                            {...register('repeatPass', {required: 'Return Password is required'})}
                         />
                         <PasswordToggle
-                            type={typeReturnPassword}
-                            onToggle={() => setTypeReturnPassword(typeReturnPassword === 'password' ? 'text' : 'password')}
+                            type={typeRepeatPassword}
+                            onToggle={() => setTypeRepeatPassword(typeRepeatPassword === 'password' ? 'text' : 'password')}
                             closeEyeSrc={closeEye}
                             openEyeSrc={openEye}
                         />
-                        <ErrorContainer error={errors.returnPassword && errors.returnPassword.message}/>
+                        <ErrorContainer error={errors.repeatPass && errors.repeatPass.message}/>
                     </ContainerInput>
                     <SignUpButton type={'submit'} disabled={!isValid || !imageUrl}>Submit</SignUpButton>
                     <FileInput
@@ -147,7 +148,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-
 `
 const FileInput = styled.input`
   opacity: 0;

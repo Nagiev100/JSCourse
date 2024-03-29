@@ -7,7 +7,7 @@ interface SignUpPickerProps {
     children?: ReactNode;
 }
 
-export const SignUpPicker: FC<SignUpPickerProps> = ({backgroundImage, onClick, children,}) => {
+export const Picker: FC<SignUpPickerProps> = ({backgroundImage, onClick, children,}) => {
     return (
         <ContainerPickerWrapper backgroundImage={backgroundImage} onClick={onClick}>
             {children}
