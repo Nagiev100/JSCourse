@@ -1,3 +1,5 @@
+import {SignUpFormData} from "../pages/signUp/SignUp";
+
 export const validationInputPassword = {
     required: 'Password is required',
     pattern: {
@@ -24,3 +26,12 @@ export const validationInputLogin = {
         message: 'The maximum login length should be no more than 12 characters'
     }
 }
+
+
+export const validatinInputConfirmPassword = (getValues:() => SignUpFormData) => ({
+    required: 'Return Password is required',
+    validate: (value:string) => {
+        const { password } = getValues();
+        return password === value || "Passwords should match!";
+    }
+})
