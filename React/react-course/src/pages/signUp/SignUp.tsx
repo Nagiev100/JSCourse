@@ -1,10 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {ChangeEvent, FC, useRef, useState} from "react";
-import {FieldError, useForm, UseFormRegisterReturn} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import styled from "styled-components";
-import {Input} from "../../components/input";
-import closeEye from "../../assests/icon/close_eye.svg";
-import openEye from "../../assests/icon/eye_rounded.svg";
+import {InputStyle} from "../../helpers/inputStyle";
 import clickerPhoto from '../../assests/icon/cllickerPhoto.svg'
 import {generateId} from "../../helpers/generateId";
 import {
@@ -14,34 +12,15 @@ import {
 } from "../../helpers/validateInput";
 import {SignUpSlogan} from "../../components/SignUpSlogan";
 import {SignUpPicker} from "../../components/SignUpPicker";
-import {PasswordToggle} from "../../components/SignUpPasswordIcon";
 import {ErrorContainer} from "../../components/SignUpErrorContainer";
 import {SignUpButton} from "../../components/Button";
+import {COLORS} from "../../helpers/Colors";
+import {InputNavigation} from "../../components/Input";
 
 export interface SignUpFormData {
     login: string;
     password: string;
     returnPassword: string;
-}
-
-function InputNavigation(props: { errors?:FieldError , type: string, register: UseFormRegisterReturn<string>, onToggle: () => void }) {
-    return <ContainerInput>
-        <Label htmlFor="password">Password</Label>
-        <Input
-            /* value={password}*/
-            borderColor={props.errors ? "#FF768E" : "#F6F6F6"}
-            id="password"
-            type={props.type}
-            {...props.register}
-        />
-        <PasswordToggle
-            type={props.type}
-            onToggle={props.onToggle}
-            closeEyeSrc={closeEye}
-            openEyeSrc={openEye}
-        />
-        <ErrorContainer error={props.errors && props.errors.message}/>
-    </ContainerInput>;
 }
 
 export const SignUp: FC = () => {
@@ -50,32 +29,28 @@ export const SignUp: FC = () => {
     const [typeReturnPassword, setTypeReturnPassword] = useState("password");
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
-   /* const [password, setPassword] = useState('Vyusal2222');
-    const [passwordReturn, setPasswordReturn] = useState('Vyusal2222');
-    const [login, setLogin] = useState('Vyusal');*/
 
     const {
         handleSubmit,
         getValues,
         register,
         formState: {errors, isValid},
-        setError
     } = useForm<SignUpFormData>({
         mode: 'onBlur',
     });
 
     const onSubmit = (data: SignUpFormData) => {
         const newToken = generateId();
-            if (newToken) {
-                localStorage.setItem("token", newToken);
-                localStorage.setItem("login", data.login);
-                if (imageUrl){
-                    localStorage.setItem('img',imageUrl)
-                }
-                navigator('/');
-            } else {
-                console.error('Error generating token');
+        if (newToken) {
+            localStorage.setItem("token", newToken);
+            localStorage.setItem("login", data.login);
+            if (imageUrl) {
+                localStorage.setItem('img', imageUrl)
             }
+            navigator('/');
+        } else {
+            console.error('Error generating token');
+        }
 
     };
 
@@ -102,20 +77,23 @@ export const SignUp: FC = () => {
                 </SignUpPicker>
                 <FormSignUp onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor='login'>Login</Label>
-                    <Input
-                        /* value={login}*/
-                        borderColor={errors?.login ? "#FF768E" : "#F6F6F6"}
+                    <InputStyle
+                        borderColor={errors?.login ? COLORS.Red : COLORS.White}
                         id='login'
                         {...register('login', validationInputLogin)}
                     />
                     <ErrorContainer error={errors.login && errors.login.message}/>
                     <InputNavigation errors={errors.password} type={typePassword}
                                      register={register('password', validationInputPassword)}
-                                     onToggle={() => setTypePassword(typePassword === 'password' ? 'text' : 'password')}/>
+                                     onToggle={() => setTypePassword(typePassword === 'password' ? 'text' : 'password')}
+                                     id={'password'}
+                    />
 
                     <InputNavigation errors={errors.returnPassword} type={typeReturnPassword}
                                      register={register('returnPassword', validatinInputConfirmPassword(getValues))}
-                                     onToggle={() => setTypeReturnPassword(typeReturnPassword === 'password' ? 'text' : 'password')}/>
+                                     onToggle={() => setTypeReturnPassword(typeReturnPassword === 'password' ? 'text' : 'password')}
+                                     id={'returnPassword'}
+                    />
 
                     <SignUpButton type={'submit'} disabled={!isValid || !imageUrl}>Submit</SignUpButton>
                     <FileInput
@@ -140,7 +118,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-
 `
 const FileInput = styled.input`
   opacity: 0;
@@ -162,11 +139,7 @@ const Label = styled.label`
   line-height: 24px;
   margin-top: 26px;
 `
-const ContainerInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-`;
+
 
 
 

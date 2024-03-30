@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import {SignUp} from "../pages/signUp/SignUp";
 import {Home} from "../pages/home/Home";
 import {NotFoundPage} from "../pages/notFoundPage/NotFoundPage";
-import {ProtectedRoad} from "./ProtectedRoad";
+import {ProtectedRoute} from "./ProtectedRoute";
 
 
 
@@ -13,9 +13,9 @@ export const RoutNavigationContainer: FC = () => {
             <Route path='SignUp' element={<SignUp/>}/>
             <Route path='/' element=
                 {
-                    <ProtectedRoad>
+                    <ProtectedRoute>
                         <Home/>
-                    </ProtectedRoad>
+                    </ProtectedRoute>
                 }/>
             <Route path='*' element={<NotFoundPage/>}/>
         </Routes>

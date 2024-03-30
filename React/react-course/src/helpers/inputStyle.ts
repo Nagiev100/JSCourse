@@ -4,7 +4,7 @@ interface InputComponent {
     borderColor?: string;
 }
 
-export const Input = styled.input<InputComponent>`
+export const InputStyle = styled.input<InputComponent>`
   width: 300px;
   height: 200px;
   font-size: 14px;
