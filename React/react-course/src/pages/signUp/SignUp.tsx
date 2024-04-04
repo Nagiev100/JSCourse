@@ -10,12 +10,14 @@ import {
     validationInputLogin,
     validationInputPassword
 } from "../../helpers/validateInput";
-import {SignUpSlogan} from "../../components/SignUpSlogan";
-import {SignUpPicker} from "../../components/SignUpPicker";
-import {ErrorContainer} from "../../components/SignUpErrorContainer";
+import {Slogan} from "../../components/Slogan";
+import {Picker} from "../../components/Picker";
+import {ErrorContainer} from "../../components/ErrorContainer";
 import {SignUpButton} from "../../components/Button";
-import {COLORS} from "../../helpers/Colors";
+import {Colors} from "../../helpers/colors";
 import {InputNavigation} from "../../components/Input";
+import {useAppDispatch} from "../../store/store";
+import {setUserAction} from "../../store/reducers/getUserData/userReducer";
 
 export interface SignUpFormData {
     login: string;
@@ -29,7 +31,7 @@ export const SignUp: FC = () => {
     const [typeReturnPassword, setTypeReturnPassword] = useState("password");
     const [imageUrl, setImageUrl] = useState<string | undefined>();
     const filePicker = useRef<HTMLInputElement>(null);
-
+    const dispatch = useAppDispatch();
     const {
         handleSubmit,
         getValues,
@@ -41,12 +43,14 @@ export const SignUp: FC = () => {
 
     const onSubmit = (data: SignUpFormData) => {
         const newToken = generateId();
-        if (newToken) {
+        if (newToken && imageUrl) {
             localStorage.setItem("token", newToken);
-            localStorage.setItem("login", data.login);
-            if (imageUrl) {
-                localStorage.setItem('img', imageUrl)
-            }
+            dispatch(
+                setUserAction({
+                    login: data.login,
+                    imageUrl: imageUrl,
+                })
+            );
             navigator('/');
         } else {
             console.error('Error generating token');
@@ -71,14 +75,14 @@ export const SignUp: FC = () => {
     return (
         <Container>
             <Wrapper>
-                <SignUpSlogan>Sign Up</SignUpSlogan>
-                <SignUpPicker backgroundImage={imageUrl} onClick={handlePick}>
+                <Slogan>Sign Up</Slogan>
+                <Picker backgroundImage={imageUrl} onClick={handlePick}>
                     <img src={clickerPhoto} alt="icon"/>
-                </SignUpPicker>
+                </Picker>
                 <FormSignUp onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor='login'>Login</Label>
                     <InputStyle
-                        borderColor={errors?.login ? COLORS.Red : COLORS.White}
+                        borderColor={errors?.login ? Colors.Red : Colors.White}
                         id='login'
                         {...register('login', validationInputLogin)}
                     />
@@ -94,7 +98,6 @@ export const SignUp: FC = () => {
                                      onToggle={() => setTypeReturnPassword(typeReturnPassword === 'password' ? 'text' : 'password')}
                                      id={'returnPassword'}
                     />
-
                     <SignUpButton type={'submit'} disabled={!isValid || !imageUrl}>Submit</SignUpButton>
                     <FileInput
                         type="file"
@@ -128,6 +131,7 @@ const FileInput = styled.input`
   padding: 0;
   margin: 0;
 `;
+
 const FormSignUp = styled.form`
   display: flex;
   flex-direction: column;

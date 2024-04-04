@@ -5,7 +5,7 @@ interface SignUpHeaderProps {
     children: ReactNode;
 }
 
-export const SignUpSlogan: FC<SignUpHeaderProps> = ({ children }) => {
+export const Slogan: FC<SignUpHeaderProps> = ({ children }) => {
     return <SloganSignUp>{children}</SloganSignUp>;
 };
 
