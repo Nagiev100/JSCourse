@@ -1,11 +1,8 @@
 {
   "day": "day",
   "out": "out",
-  "russianLanguage": "Russian",
-  "weather": {
-    "feelsLike": "Feels like",
-    "pressure": "Pressure",
-    "humidity": "Humidity",
-    "wind": "Wind"
-  }
+  "fiveDay" : "Five day",
+  "pollution": "Pollution air",
+  "light": "light",
+  "dark": "dark"
 }

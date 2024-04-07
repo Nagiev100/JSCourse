@@ -1,11 +1,8 @@
 {
   "day": "день",
   "out": "Выход",
-  "russianLanguage": "Russian",
-  "weather": {
-    "feelsLike": "Feels like",
-    "pressure": "Pressure",
-    "humidity": "Humidity",
-    "wind": "Wind"
-  }
+  "fiveDay" : "Пять дней",
+  "pollution": "загрязнение воздуха",
+  "light": "Светлая",
+  "dark": "Темная"
 }

@@ -12,8 +12,15 @@ import {Menu} from "../../components/HamburgerMenu";
 import {WeatherData} from "../../store/reducers/getWeather/getWeatherInterface";
 import {PollutionListItem} from "../../store/reducers/getAirPollution/getAirPollutionInterface";
 import {useTranslation} from "react-i18next";
+import {ThemeToggle} from "../../components/ThemeToggle";
 
-export const Home: FC = () => {
+
+interface Props {
+    themeToggler: () => void,
+    theme:string
+}
+
+export const Home: FC <Props>= ({themeToggler,theme}) => {
     const navagot = useNavigate();
     const weatherData = useAppSelector((state) => state.weatherFiveDay.data);
     const pollutionData = useAppSelector(state => state.airPollution.list);
@@ -26,11 +33,11 @@ export const Home: FC = () => {
 
     return (
         <ContainerHome>
-
             <ContainerParams>
                 <Wrapper>
                     <FetchFiveDayButton handleClick={() => setShowWeather(true)} />
                     <FetchFourDayPollution handleClick={() => setShowWeather(false)} />
+                    <ThemeToggle themeToggler={themeToggler} theme={theme}/>
                 </Wrapper>
                 <Wrapper>
                     <SearchContainer />
@@ -70,13 +77,13 @@ export const Home: FC = () => {
 const ContainerHome = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: bisque;
+  background-color: ${({theme}) => theme.bodyBackground};
 `
 const ContainerParams = styled.div`
  display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: bisque;
+  background-color: ${({theme}) => theme.bodyBackground};
 `
 const ContainerCard = styled.div`
   display: flex;
@@ -86,6 +93,7 @@ const ContainerCard = styled.div`
   
 `
 const Wrapper = styled.div`
- display: flex;
+  display: flex;
   column-gap: 2vw;
+  background-color: ${({theme}) => theme.bodyBackground};
 `

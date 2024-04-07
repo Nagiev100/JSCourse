@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { WeatherForecastResponse } from "../store/reducers/getWeather/getWeatherInterface";
 import { fetchAirPollution } from "../store/reducers/getAirPollution/getAirPollutionThunk";
+import {t} from "i18next";
 
 interface FetchFourDayPollutionProps {
     handleClick: () => void;
@@ -32,7 +33,7 @@ export const FetchFourDayPollution: FC<FetchFourDayPollutionProps> = ({ handleCl
 
     return (
         <div>
-            <button onClick={onClickHandler}>Fetch Four Day Pollution</button>
+            <button onClick={onClickHandler}>{t("pollution")}</button>
         </div>
     );
 };

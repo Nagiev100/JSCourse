@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { fetchWeatherForecast } from "../store/reducers/getWeather/getWeatherThunk";
 import { WeatherForecastResponse } from "../store/reducers/getWeather/getWeatherInterface";
+import { t } from 'i18next';
 
 interface FetchFiveDayButtonProps {
     handleClick: () => void;
@@ -31,7 +32,7 @@ export const FetchFiveDayButton: FC<FetchFiveDayButtonProps> = ({ handleClick })
 
     return (
         <div>
-            <button onClick={onClickHandler}>5 дней</button>
+            <button onClick={onClickHandler}>{t("fiveDay")}</button>
         </div>
     );
 };

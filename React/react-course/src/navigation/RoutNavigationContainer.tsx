@@ -6,15 +6,18 @@ import {NotFoundPage} from "../pages/notFoundPage/NotFoundPage";
 import {ProtectedRoute} from "./ProtectedRoute";
 
 
-
-export const RoutNavigationContainer: FC = () => {
+interface Props {
+    themeToggler: () => void,
+    theme:string
+}
+export const RoutNavigationContainer: FC<Props> =  ({themeToggler, theme}) => {
     return(
         <Routes>
             <Route path='SignUp' element={<SignUp/>}/>
             <Route path='/' element=
                 {
                     <ProtectedRoute>
-                        <Home/>
+                        <Home themeToggler={themeToggler} theme={theme}/>
                     </ProtectedRoute>
                 }/>
             <Route path='*' element={<NotFoundPage/>}/>
