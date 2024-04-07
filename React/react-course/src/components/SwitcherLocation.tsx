@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import Select from 'react-select';
 import { useAppDispatch } from "../store/store";
 import { setLanguage } from "../store/reducers/getLocation/sliceReducer";
+import {useTranslation} from "react-i18next";
 
 export interface IOptions {
     value: string;
@@ -23,10 +24,13 @@ export const SwitcherLocation: FC = () => {
         },
     ];
 
+    const { t, i18n } = useTranslation();
     const updateLocation = (selectedOption: IOptions | null) => {
         if (selectedOption) {
             setLocation(selectedOption.value);
             dispatch(setLanguage(selectedOption.value));
+            i18n.changeLanguage(selectedOption.value);
+            localStorage.setItem("lang", selectedOption.value);
         }
     };
 

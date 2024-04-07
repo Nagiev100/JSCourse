@@ -5,8 +5,8 @@ interface InputComponent {
 }
 
 export const InputStyle = styled.input<InputComponent>`
-  width: 300px;
-  height: 200px;
+  width: 366px;
+  height: 40px;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;

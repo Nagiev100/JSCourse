@@ -11,13 +11,14 @@ import { PallutionCard } from "../../components/PallutionCard";
 import {Menu} from "../../components/HamburgerMenu";
 import {WeatherData} from "../../store/reducers/getWeather/getWeatherInterface";
 import {PollutionListItem} from "../../store/reducers/getAirPollution/getAirPollutionInterface";
+import {useTranslation} from "react-i18next";
 
 export const Home: FC = () => {
     const navagot = useNavigate();
     const weatherData = useAppSelector((state) => state.weatherFiveDay.data);
     const pollutionData = useAppSelector(state => state.airPollution.list);
     const [showWeather, setShowWeather] = useState(true);
-
+    const {t} = useTranslation()
     const out = () => {
         localStorage.removeItem('token');
         navagot('SignUp');
@@ -25,6 +26,7 @@ export const Home: FC = () => {
 
     return (
         <ContainerHome>
+
             <ContainerParams>
                 <Wrapper>
                     <FetchFiveDayButton handleClick={() => setShowWeather(true)} />
@@ -33,7 +35,7 @@ export const Home: FC = () => {
                 <Wrapper>
                     <SearchContainer />
                     <SwitcherLocation />
-                    <button onClick={out}>out</button>
+                    <button onClick={out}>{t("out")}</button>
                     <Menu/>
                 </Wrapper>
             </ContainerParams>

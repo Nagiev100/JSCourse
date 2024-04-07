@@ -1,0 +1,11 @@
+{
+  "day": "day",
+  "out": "out",
+  "russianLanguage": "Russian",
+  "weather": {
+    "feelsLike": "Feels like",
+    "pressure": "Pressure",
+    "humidity": "Humidity",
+    "wind": "Wind"
+  }
+}

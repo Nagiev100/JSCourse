@@ -5,6 +5,7 @@ import {BrowserRouter} from "react-router-dom"
 import { Global } from './helpers/GlobalStyle';
 import {ThemeProvider} from "styled-components";
 import {theme} from "./helpers/responsive";
+import './i18';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
