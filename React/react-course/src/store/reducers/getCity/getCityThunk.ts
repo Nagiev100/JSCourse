@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Keys } from "../../../helpers/keys";
-import {City} from "./getCitySlice";
+import {City} from "./getCityInterface";
+import {useAppSelector} from "../../store";
+
 
 export const fetchCityName = createAsyncThunk<City[], string>(
-    'city/fetchCityName', // Префикс экшена
+    'city/fetchCityName',
     async (cityName: string) => {
         try {
             const response = await fetch(`https://api.api-ninjas.com/v1/city?name=${cityName}`, {

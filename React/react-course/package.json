@@ -27,6 +27,8 @@
     ]
   },
   "devDependencies": {
+    "@types/i18next": "^13.0.0",
+    "@types/i18next-browser-languagedetector": "^3.0.0",
     "@types/lodash": "^4.17.0",
     "@types/uuid": "^9.0.8"
   },
@@ -40,10 +42,12 @@
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "i18n": "^0.15.1",
+    "i18next": "^23.10.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
+    "react-i18next": "^14.1.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",

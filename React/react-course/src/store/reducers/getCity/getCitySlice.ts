@@ -1,25 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {fetchCityName} from "./getCityThunk";
-
-export interface City {
-    country: string;
-    is_capital: boolean;
-    latitude: number;
-    longitude: number;
-    name: string;
-    population: number;
-}
-
-interface CityState {
-    cities: City[] | null;
-    error: string | null;
-}
-
-const initialState: CityState = {
-    cities: null,
-    error: null,
-};
-
+import {initialState} from "./getCityInterface";
 
 export const citySlice = createSlice({
     name: 'city',

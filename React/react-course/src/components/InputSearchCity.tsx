@@ -3,7 +3,8 @@ import Select from "react-select";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { fetchCityName } from "../store/reducers/getCity/getCityThunk";
-import {City} from "../store/reducers/getCity/getCitySlice";
+import {City} from "../store/reducers/getCity/getCityInterface";
+
 
 
 

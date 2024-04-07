@@ -16,10 +16,9 @@ interface SetUserDataPayload {
     imageUrl: string;
 }
 
-// Создаем action creator
+
 export const setUserAction = createAction<SetUserDataPayload>('user/setUserData');
 
-// Создаем редьюсер
 export const userReducer = createReducer(initialState, (builder) => {
     builder.addCase(setUserAction, (state, action) => {
         state.login = action.payload.login;
