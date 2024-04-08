@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { WeatherForecastResponse } from "../store/reducers/getWeather/getWeatherInterface";
 import { fetchAirPollution } from "../store/reducers/getAirPollution/getAirPollutionThunk";
 import {t} from "i18next";
+import {Button} from "./FetchFiveDayButton";
 
 interface FetchFourDayPollutionProps {
     handleClick: () => void;
@@ -25,7 +26,7 @@ export const FetchFourDayPollution: FC<FetchFourDayPollutionProps> = ({ handleCl
             const action = await dispatch(fetchAirPollution({ lat, lon }));
             const weatherData = action.payload as WeatherForecastResponse;
             console.log("Weather data:", weatherData);
-            handleClick(); // Вызываем переданный обработчик клика
+            handleClick();
         } catch (error) {
             console.error("Error fetching weather data:", error);
         }
@@ -33,7 +34,7 @@ export const FetchFourDayPollution: FC<FetchFourDayPollutionProps> = ({ handleCl
 
     return (
         <div>
-            <button onClick={onClickHandler}>{t("pollution")}</button>
+            <Button onClick={onClickHandler}>{t("pollution")}</Button>
         </div>
     );
 };

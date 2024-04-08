@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Keys } from "../../../helpers/keys";
 import {City} from "./getCityInterface";
-import {useAppSelector} from "../../store";
 
 
 export const fetchCityName = createAsyncThunk<City[], string>(

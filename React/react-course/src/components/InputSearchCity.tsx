@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { fetchCityName } from "../store/reducers/getCity/getCityThunk";
 import {City} from "../store/reducers/getCity/getCityInterface";
+import {colourStyles} from "../helpers/selectDayStyle";
 
 
 
@@ -35,6 +36,7 @@ export const SearchCity: FC = () => {
         <>
             <Label htmlFor='city'>City</Label>
             <Select
+                styles={colourStyles}
                 id='city'
                 inputValue={cityInput}
                 options={options}

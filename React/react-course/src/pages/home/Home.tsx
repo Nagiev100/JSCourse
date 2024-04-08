@@ -42,7 +42,7 @@ export const Home: FC <Props>= ({themeToggler,theme}) => {
                 <Wrapper>
                     <SearchContainer />
                     <SwitcherLocation />
-                    <button onClick={out}>{t("out")}</button>
+                    <ButtonOut onClick={out}>{t("out")}</ButtonOut>
                     <Menu/>
                 </Wrapper>
             </ContainerParams>
@@ -96,4 +96,21 @@ const Wrapper = styled.div`
   display: flex;
   column-gap: 2vw;
   background-color: ${({theme}) => theme.bodyBackground};
+`
+const ButtonOut = styled.button`
+  background-color: #e4163a;
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  width: 60px;
+  height: 40px;
+
+  &:hover {
+    background-color: #ff5761;
+  }
+
+  &:active {
+    background-color: #c60e2e;
+  } ;
+
 `

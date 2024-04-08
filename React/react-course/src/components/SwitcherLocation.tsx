@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { useAppDispatch } from "../store/store";
 import { setLanguage } from "../store/reducers/getLocation/sliceReducer";
 import {useTranslation} from "react-i18next";
+import {colourStyles} from "../helpers/selectDayStyle";
 
 export interface IOptions {
     value: string;
@@ -37,6 +38,7 @@ export const SwitcherLocation: FC = () => {
     return (
         <>
             <Select
+                styles={colourStyles}
                 options={options}
                 onChange={updateLocation}
                 defaultValue={options.find(option => option.value === location)}

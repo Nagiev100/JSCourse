@@ -1,7 +1,5 @@
 import {FC} from "react";
-import {useTheme} from "../hooks/useTheme";
 import {t} from "i18next";
-
 
 interface Props {
     themeToggler: () => void

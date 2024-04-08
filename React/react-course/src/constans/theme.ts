@@ -1,5 +1,5 @@
 export const lightTheme = {
-    bodyBackground: "#ffffff",
+    bodyBackground: "#F5FBFF",
 };
 
 export const darkTheme = {
