@@ -48,7 +48,7 @@ export const Menu: FC = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: powderblue;
   position: fixed;
   top: 0;
   right: -100%;
